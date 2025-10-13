@@ -1,4 +1,6 @@
-package st10478485;
+
+package chatapp;
+
 
 import java.util.Random;
 

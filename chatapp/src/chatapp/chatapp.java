@@ -1,11 +1,11 @@
-package st10478485;
+package chatapp;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.regex.Pattern;
 
-public class ST10478485 {
+public class chatapp {
     private String username;
     private String password;
     private String cellNumber;
@@ -16,7 +16,7 @@ public class ST10478485 {
     // === GUI Entry Point ===
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            ST10478485 app = new ST10478485();
+            chatapp app = new chatapp();
             app.showMainMenu();
         });
     }
