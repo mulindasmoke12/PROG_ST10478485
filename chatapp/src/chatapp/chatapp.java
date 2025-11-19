@@ -1,4 +1,4 @@
-package boitychat;
+package chatapp;
 
 import javax.swing.*;
 import java.awt.*;
