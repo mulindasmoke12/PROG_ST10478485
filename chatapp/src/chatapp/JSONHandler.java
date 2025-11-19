@@ -1,7 +1,6 @@
 
 package chatapp;
 
-
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -112,6 +111,37 @@ public class JSONHandler {
         }
     }
 
+    public static String getAllMessages() {
+        try {
+            List<String> messages = readAllMessages();
+            if (messages.isEmpty()) {
+                return "No messages stored.";
+            }
+            
+            StringBuilder sb = new StringBuilder();
+            sb.append("Stored Messages:\n");
+            sb.append("================\n");
+            
+            for (String messageJson : messages) {
+                // Simple parsing to extract key information
+                String[] lines = messageJson.split("\n");
+                String messageID = extractValue(lines, "messageID");
+                String recipient = extractValue(lines, "recipient");
+                String status = extractValue(lines, "status");
+                String timestamp = extractValue(lines, "timestamp");
+                
+                sb.append("ID: ").append(messageID)
+                  .append(" | To: ").append(recipient)
+                  .append(" | Status: ").append(status)
+                  .append(" | Time: ").append(timestamp)
+                  .append("\n");
+            }
+            return sb.toString();
+            
+        } catch (IOException e) {
+            return "Error reading messages: " + e.getMessage();
+        }
+    }
 
     private static String extractValue(String[] lines, String key) {
         for (String line : lines) {
@@ -141,8 +171,5 @@ public class JSONHandler {
                   .replace("\\f", "\f");
     }
 
-
-    static String getAllMessages() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   
 }
